@@ -1,0 +1,63 @@
+@FinancialServices.Api_HostAddress =  https://localhost:5001
+
+### Get all customers
+GET {{banking_api}}/api/customers
+Accept: application/json
+
+###
+
+### Create new customer
+POST {{banking_api}}/api/customers
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "dateOfBirth": "1990-05-10",
+  "sex": "Male",
+  "income": 3500.00
+}
+
+###
+
+### Create bank account for customer
+POST {{banking_api}}/api/accounts
+Content-Type: application/json
+
+{
+  "customerId": "PUT_CUSTOMER_ID_HERE",
+  "initialBalance": 1000.00
+}
+
+###
+
+### Check account balance
+GET {{banking_api}}/api/accounts/123456789/balance
+Accept: application/json
+
+###
+
+### Make deposit transaction
+POST {{banking_api}}/api/accounts/123456789/transactions
+Content-Type: application/json
+
+{
+  "type": "Deposit",
+  "amount": 500.00
+}
+
+###
+
+### Make withdrawal transaction
+POST {{banking_api}}/api/accounts/123456789/transactions
+Content-Type: application/json
+
+{
+  "type": "Withdrawal",
+  "amount": 200.00
+}
+
+###
+
+### Get account transactions
+GET {{banking_api}}/api/accounts/123456789/transactions
+Accept: application/json
